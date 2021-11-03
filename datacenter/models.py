@@ -26,11 +26,7 @@ class Visit(models.Model):
         return self.leaved_at - self.entered_at
 
     def is_visit_long(self, minutes=60):
-        return (
-            False
-            if self.get_duration() < timedelta(minutes=minutes)
-            else True
-        )
+        return self.get_duration() > timedelta(minutes=minutes)
 
     @staticmethod
     def format_duration(duration):
