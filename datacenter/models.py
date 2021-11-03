@@ -1,3 +1,4 @@
+from datetime import datetime, timezone, timedelta
 from django.db import models
 
 
@@ -18,6 +19,25 @@ class Visit(models.Model):
     passcard = models.ForeignKey(Passcard)
     entered_at = models.DateTimeField()
     leaved_at = models.DateTimeField(null=True)
+
+    def get_duration(self):
+        if not self.leaved_at:
+            return datetime.now(timezone.utc) - self.entered_at
+        return self.leaved_at - self.entered_at
+
+    def is_visit_long(self, minutes=60):
+        return (
+            False
+            if self.get_duration() < timedelta(minutes=minutes)
+            else True
+        )
+
+    @staticmethod
+    def format_duration(duration):
+        seconds = duration.seconds
+        hours = seconds // 3600
+        minutes = (seconds // 60) % 60
+        return f'{hours}ч {minutes}мин'
 
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
