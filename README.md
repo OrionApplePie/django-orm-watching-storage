@@ -11,6 +11,17 @@ Python3 должен быть уже установлен.
 pip install -r requirements.txt
 ```
 
+Создайте файл .env в корне проекта. Внесите следующие данные:
+```
+CHECKPOINT_DB_HOST=<адрес_базы_данных>
+CHECKPOINT_DB_PORT=<порт_базы_данных>
+CHECKPOINT_DB_NAME=<имя_базы_данных>
+CHECKPOINT_DB_USER=<имя_пользователя_базы_данных>
+CHECKPOINT_DB_PASSWORD=<пароль_пользователя>
+
+DJANGO_SECRET_KEY=<секретный_ключ>
+```
+
 ## Цель проекта
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
