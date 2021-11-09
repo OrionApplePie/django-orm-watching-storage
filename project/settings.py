@@ -1,25 +1,26 @@
 import os
 
-from dotenv import load_dotenv, find_dotenv
+from environs import Env
 
-load_dotenv(find_dotenv())
+env = Env()
+env.read_env()
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': os.getenv('CHECKPOINT_DB_HOST'),
-        'PORT': os.getenv('CHECKPOINT_DB_PORT'),
-        'NAME': os.getenv('CHECKPOINT_DB_NAME'),
-        'USER': os.getenv('CHECKPOINT_DB_USER'),
-        'PASSWORD': os.getenv('CHECKPOINT_DB_PASSWORD'),
+        'HOST': env('CHECKPOINT_DB_HOST'),
+        'PORT': env('CHECKPOINT_DB_PORT'),
+        'NAME': env('CHECKPOINT_DB_NAME'),
+        'USER': env('CHECKPOINT_DB_USER'),
+        'PASSWORD': env('CHECKPOINT_DB_PASSWORD'),
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
-DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG")
 
 ROOT_URLCONF = "project.urls"
 
