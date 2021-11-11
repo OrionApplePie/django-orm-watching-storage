@@ -10,7 +10,7 @@
 - [Python 3.x](https://www.python.org/)
 - [Git](https://git-scm.com/download)
 
-Для Windows можно использовать:
+Дополнительно для Windows можно использовать:
 
 - [GitHub Desktop](https://desktop.github.com/) &mdash; gui для git.
 - [Cmdr](https://cmder.net/) &mdash; удобная замена стандартной командной строке Windows.
