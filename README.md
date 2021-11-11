@@ -34,18 +34,18 @@ git clone https://github.com/OrionApplePie/django-orm-watching-storage.git
 pip install -r requirements.txt
 ```
 
-Создайте файл .env в корне проекта. Внесите следующие данные:
+Создайте файл `.env` в корне проекта. Внесите следующие данные:
 ```
-CHECKPOINT_DB_HOST=<адрес_базы_данных>
-CHECKPOINT_DB_PORT=<порт_базы_данных>
-CHECKPOINT_DB_NAME=<имя_базы_данных>
-CHECKPOINT_DB_USER=<имя_пользователя_базы_данных>
-CHECKPOINT_DB_PASSWORD=<пароль_пользователя>
+CHECKPOINT_DATABASE_URL=<postgres://USER:PASSWORD@HOST:PORT/NAME>
 
 DJANGO_SECRET_KEY=<секретный_ключ>
-
+DJANGO_ALLOWED_HOSTS=<ваш_домен1,ваш_домен2>
 DJANGO_DEBUG=False
 ```
+В переменную `CHECKPOINT_DATABASE_URL` вносится строка для подключения к БД.
+Здесь приведен пример схемы строки подключения для Postgresql, схемы для других СУБД по [ссылке](https://github.com/jacobian/dj-database-url#url-schema).
+
+В переменную `DJANGO_ALLOWED_HOSTS` нужно внести список хостов/доменов, для которых может работать текущий сайт. Если таковых несколько, то внесите их через запятую. Это необходимо для [безопасности](https://djbook.ru/rel1.7/ref/settings.html#allowed-hosts).
 
 Переменная `DJANGO_DEBUG` должна иметь значение `False` на production-сервере.
 
