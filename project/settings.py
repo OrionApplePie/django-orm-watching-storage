@@ -17,9 +17,9 @@ INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
-DEBUG = env.bool("DJANGO_DEBUG")
+DEBUG = env.bool('DJANGO_DEBUG')
 
-ROOT_URLCONF = "project.urls"
+ROOT_URLCONF = 'project.urls'
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
